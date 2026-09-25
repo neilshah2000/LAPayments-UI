@@ -1,0 +1,17 @@
+# data/ is symlinks to paths outside the build context -- Docker will not follow them, and
+# nothing here needs them: Parquet is read from s3://, the CSVs from LAP_CATALOGUE_DIR.
+data
+node_modules
+web/node_modules
+web/dist
+.git
+.gitignore
+baseline
+docs
+scripts/sanity.py
+**/*.test.ts
+.env
+.DS_Store
+__pycache__
+Dockerfile
+.dockerignore

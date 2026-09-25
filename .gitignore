@@ -1,0 +1,11 @@
+# data/ is symlinks to the local collection repo (or an S3 sync later) — never committed
+data/
+node_modules/
+__pycache__/
+.env
+.DS_Store
+web/node_modules/
+web/dist/
+
+# staged Docker build context (scripts/stage-catalogue.sh); collection repo is the source of truth
+build/

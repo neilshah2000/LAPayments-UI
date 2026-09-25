@@ -1,0 +1,33 @@
+{
+  "name": "lapayments-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Backend + UI over the LAPayments serving layer (UK council supplier payments)",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "test": "node --test src/**/*.test.ts",
+    "typecheck": "tsc --noEmit && npm --prefix web run typecheck",
+    "sanity": "python3 scripts/sanity.py",
+    "web": "npm --prefix web run dev",
+    "stage:catalogue": "sh scripts/stage-catalogue.sh",
+    "docker:build": "npm run stage:catalogue && docker build --platform=linux/arm64 -t lapayments-ui .",
+    "deploy": "sh scripts/deploy.sh"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@duckdb/node-api": "^1.5.5-r.5",
+    "@hono/node-server": "^2.1.1",
+    "@hono/zod-validator": "^0.9.1",
+    "hono": "^4.13.8",
+    "tsx": "^4.23.15",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "typescript": "^7.0.2"
+  }
+}

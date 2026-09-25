@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Council supplier payments (alpha)</title>
+  <!-- Forwards to the app on AWS (published by .github/workflows/pages.yml). If the ECS Express
+       service is ever recreated it gets a new URL: update APP and the meta refresh, then push. -->
+  <meta http-equiv="refresh" content="0; url=https://la-742fd0f9675d464d941e05189596c915.ecs.us-east-1.on.aws/">
+  <script>
+    // Carry the #/XXX council route across, so a link to one council's page still lands on it.
+    var APP = 'https://la-742fd0f9675d464d941e05189596c915.ecs.us-east-1.on.aws/';
+    location.replace(APP + location.hash);
+  </script>
+  <style>
+    body { margin: 0; font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; background: #f9f9f7; color: #0b0b0b; }
+    main { max-width: 36rem; margin: 20vh auto 0; padding: 0 16px; }
+    @media (prefers-color-scheme: dark) { body { background: #0d0d0d; color: #fff; } }
+  </style>
+</head>
+<body>
+  <main>
+    <p>Council supplier payments is in alpha. Taking you there&hellip;</p>
+    <p>If nothing happens, <a href="https://la-742fd0f9675d464d941e05189596c915.ecs.us-east-1.on.aws/">open the app</a>.</p>
+  </main>
+</body>
+</html>

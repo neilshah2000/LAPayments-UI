@@ -1,0 +1,42 @@
+{
+  "family": "lapayments-ui-express",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "runtimePlatform": {
+    "cpuArchitecture": "ARM64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "executionRoleArn": "arn:aws:iam::ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::ACCOUNT_ID:role/lapaymentsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "Main",
+      "image": "ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/lapayments-ui:IMAGE_TAG",
+      "essential": true,
+      "portMappings": [
+        {
+          "name": "http",
+          "containerPort": 3000,
+          "protocol": "tcp",
+          "appProtocol": "http"
+        }
+      ],
+      "environment": [
+        { "name": "AWS_REGION", "value": "us-east-1" },
+        { "name": "LAP_DATA_DIR", "value": "s3://lapayments-ACCOUNT_ID" },
+        { "name": "LAP_REGISTERS_DIR", "value": "s3://lapayments-ACCOUNT_ID/registers" },
+        { "name": "LAP_MEMORY_LIMIT", "value": "700MB" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/lapayments-ui",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "express"
+        }
+      }
+    }
+  ]
+}
