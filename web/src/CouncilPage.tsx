@@ -63,12 +63,10 @@ export function CouncilPage({ la }: { la: string }) {
   return (
     <>
       <a className="crumb" href="#/">← All councils</a>
-      <h1>{c.official_name}</h1>
-      <p className="sub">
-        {int(c.rows)} rows · {c.first_date} → {c.last_date} · {c.spend_threshold === 0 ? 'publishes all payments (no threshold)' : `publishes at £${c.spend_threshold}`} · {c.objects} source files · built {c.built_at}
-        {c.profile && <>{' · '}amounts <KindBadges kinds={c.profile.amount_kind} /> dates <KindBadges kinds={c.profile.date_kind} swatch={false} /></>}
-        {source && <>{' · '}Source: <a href={source}>{c.short_name ?? c.official_name}'s spending data</a></>}
-      </p>
+      <div className="title-row">
+        <h1>{c.official_name}</h1>
+        {source && <p className="sub">Source: <a href={source}>{c.short_name ?? c.official_name}'s spending data</a></p>}
+      </div>
       {/* The catalogue lists this council but its file could not be read -- usually the
           catalogue running ahead of the object store during a rebuild. Everything below
           will fail until it lands, so say so once, here, rather than in every card. */}

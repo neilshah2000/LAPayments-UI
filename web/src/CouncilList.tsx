@@ -12,10 +12,6 @@ export function CouncilList() {
   return (
     <>
       <h1>Council supplier payments</h1>
-      <p className="sub">
-        {data.length} councils · {int(data.reduce((a, c) => a + c.rows, 0))} published rows, as published: no dedup, no threshold filter, no supplier
-        canonicalisation.
-      </p>
       <div className="card table">
         <table>
           <thead>
@@ -33,8 +29,7 @@ export function CouncilList() {
             {data.map((c) => (
               <tr key={c.la_code} className="row">
                 <td>
-                  <a href={`#/${c.la_code}`}>{c.short_name}</a>
-                  <div className="sub" style={{ margin: 0, fontSize: 12 }}>{c.la_code} · {c.official_name}</div>
+                  <a href={`#/${c.la_code}`}>{c.official_name}</a>
                 </td>
                 <td className="num">{int(c.rows)}</td>
                 <td className="dates">{c.first_date} → {c.last_date}</td>
